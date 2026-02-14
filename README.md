@@ -1,133 +1,111 @@
-# Azure Virtual Network Lab – Windows 11 + Ubuntu
+# 🖥️ Azure Windows-to-Windows Networking Lab  
+A beginner-friendly cloud networking project built on Microsoft Azure.
 
-## Goal of the lab
-
-Create two virtual machines in Microsoft Azure:
-- One **Windows 11** VM
-- One **Ubuntu (Linux)** VM  
-Both must be in the **same virtual network and subnet** so they can communicate like computers on the same LAN.
+This lab demonstrates how to deploy two Windows 11 virtual machines, place them on the same virtual network, and observe network traffic using Wireshark.  
+Completed on a **Mac Mini** using Microsoft Remote Desktop.
 
 ---
 
-## Part 1 – Create the virtual machines in Azure
-
-### 1. Sign in to the Azure portal
-
-1. On your Mac, open a web browser (Safari or Chrome).
-2. Go to: https://portal.azure.com
-3. Sign in with your Azure account.
-
----
-
-### 2. Create a Resource Group
-
-A Resource Group is like a folder that holds all the stuff for this lab.
-
-1. In the left menu, click **Resource groups**.
-2. Click **+ Create**.
-3. Set:
-   - **Subscription:** your active subscription.
-   - **Resource group name:** `RG-Network-Lab` (or any name you like).
-   - **Region:** choose a region (for example, **East US**).
-4. Click **Review + create**, then **Create**.
+# 🚀 Goals
+- Deploy two Windows 11 VMs  
+- Connect from macOS  
+- Use Wireshark to capture traffic  
+- Test ICMP, DNS, DHCP, SSH, and RDP  
+- Modify NSG firewall rules  
+- Troubleshoot Windows Firewall blocking ping  
 
 ---
 
-### 3. Create the Windows 11 Virtual Machine (VM)
+# 🧱 Part 1 — Build the Azure Environment
 
-> The checklist says “Windows 10,” but we’ll use **Windows 11**. The steps are the same idea.
+## **1. Create a Resource Group**
+- Name: `Lab-RG`
 
-#### 3.1 Start creating the VM
+ 
+<img width="1319" height="367" alt="Image 2-4-26 at 9 12 PM readme" src="https://github.com/user-attachments/assets/09039ab5-8ea7-4103-b3fc-7962139593cd" />
 
-1. In the left menu, click **Virtual machines**.
-2. Click **+ Create → Azure virtual machine**.
-
-#### 3.2 Basics tab
-
-1. **Subscription:** your active subscription.
-2. **Resource group:** select `RG-Network-Lab`.
-3. **Virtual machine name:** `Win11-VM`.
-4. **Region:** same region as the Resource Group.
-5. **Image:** open the dropdown and choose a **Windows 11** image (for example, *Windows 11 Pro* or *Windows 11 Enterprise*).
-6. **Size:** pick a small size that is allowed (for example, `Standard_B2s`).
-7. **Administrator account:**
-   - **Username:** something like `winadmin`.
-   - **Password:** create a strong password and remember it.
-8. **Inbound port rules:**
-   - **Public inbound ports:** choose **Allow selected ports**.
-   - **Select inbound ports:** check **RDP (3389)** so you can connect later.
-
-#### 3.3 Networking tab – let it create a new VNet and subnet
-
-1. Click the **Networking** tab.
-2. **Virtual network:** leave it on **Create new**.
-   - Name it something like `VNET-Lab`.
-3. **Subnet:** keep the default subnet name or rename it (for example, `Subnet-Lab`).
-4. Leave the other settings as default for this lab.
-
-#### 3.4 Create the VM
-
-1. Click **Review + create**.
-2. After validation passes, click **Create**.
-3. Wait for the deployment to finish (this can take a few minutes).
 
 ---
 
-### 4. Create the Linux (Ubuntu) VM
-
-Now you’ll create an Ubuntu VM in the **same Resource Group and same Virtual Network**.
-
-#### 4.1 Start creating the VM
-
-1. Go back to **Virtual machines**.
-2. Click **+ Create → Azure virtual machine**.
-
-#### 4.2 Basics tab
-
-1. **Subscription:** same as before.
-2. **Resource group:** select `RG-Network-Lab` (the same one).
-3. **Virtual machine name:** `Ubuntu-VM`.
-4. **Region:** same region as the Windows VM.
-5. **Image:** choose **Ubuntu Server** (for example, *Ubuntu Server 22.04 LTS*).
-6. **Size:** pick a similar small size (for example, `Standard_B2s`).
-
-#### 4.3 Authentication type
-
-1. **Authentication type:** select **Password**.
-2. **Username:** for example, `ubuntuuser`.
-3. **Password:** create and confirm a strong password.
-4. **Inbound port rules:**
-   - **Public inbound ports:** choose **Allow selected ports**.
-   - **Select inbound ports:** check **SSH (22)** so you can connect later if needed.
-
-#### 4.4 Networking tab – use the same VNet and subnet
-
-1. Click the **Networking** tab.
-2. **Virtual network:** from the dropdown, select **VNET-Lab** (the same VNet created with the Windows VM).
-3. **Subnet:** select the same subnet (for example, `Subnet-Lab`).
-4. Leave the rest as default.
-
-#### 4.5 Create the VM
-
-1. Click **Review + create**.
-2. After validation, click **Create**.
-3. Wait for the deployment to complete.
+## **2. Create Windows 11 VM #1**
+- Name: `Win11-VM1`
+- Image: Windows 11 Pro
+- Networking: Create new VNet + Subnet
 
 ---
 
-### 5. Verify both VMs are in the same Virtual Network / Subnet
+## **3. Create Windows 11 VM #2**
+- Name: `Win11-VM2`
+- Networking: Use the **same VNet + Subnet** as VM1
 
-#### 5.1 Check the Windows 11 VM
+<img width="1317" height="711" alt="Image 2-4-26 at 9 13 PM" src="https://github.com/user-attachments/assets/f76ecd3f-e9ef-49c0-b191-f0b05d200e67" />
 
-1. In **Virtual machines**, click `Win11-VM`.
-2. In the left menu, under **Settings**, click **Networking**.
-3. Note the **Virtual network** and **Subnet** names (for example, `VNET-Lab` and `Subnet-Lab`).
 
-#### 5.2 Check the Ubuntu VM
+---
 
-1. In **Virtual machines**, click `Ubuntu-VM`.
-2. Click **Networking**.
-3. Confirm that:
-   - **Virtual network** is the same (for example, `VNET-Lab`).
-   - **Subnet** is the same (for example, `Subnet-Lab`).
+## **4. Confirm Network Settings**
+Both VMs should show the same:
+- Virtual Network  
+- Subnet  
+
+
+---
+
+# 🖥️ Part 2 — Connect to VM1 (from macOS)
+
+## **1. Install Microsoft Remote Desktop**
+From the Mac App Store.
+
+![Image 2-1-26 at 10 04 AM](https://github.com/user-attachments/assets/44ac90c7-35df-4e5e-a2ed-8ed98fa545e7)
+
+
+---
+
+## **2. Connect to VM1**
+Use VM1’s **Public IP**.
+
+
+---
+
+# 🔍 Part 3 — Wireshark Traffic Capture
+
+## **1. Install Wireshark inside VM1**
+Download from https://www.wireshark.org/
+
+![Image 2-1-26 at 10 15 AM](https://github.com/user-attachments/assets/ed0b5e93-28b9-433c-8c50-a2ac62fe927c)
+
+
+---
+
+## **2. Start a capture**
+Double‑click the Ethernet adapter.
+
+
+---
+
+## **3. Filter for ICMP**
+
+![Image 2-1-26 at 10 26 AM](https://github.com/user-attachments/assets/7b865b4f-2bcb-4977-9240-0bdee24ca649)
+
+
+---
+
+## **4. Ping VM2**
+
+
+<img width="1793" height="787" alt="Screenshot 2026-02-14 at 12 21 50 AM" src="https://github.com/user-attachments/assets/4758610a-b903-43de-a734-fe4f1c74a617" />
+
+
+---
+
+## **5. Ping Google**
+
+<img width="1983" height="737" alt="Screenshot 2026-02-14 at 12 24 40 AM" src="https://github.com/user-attachments/assets/8a62892a-867c-42d5-b57b-eb9d1b6dbd0a" />
+
+
+# 🔥 Part 4 — Firewall (NSG) Testing
+
+## **1. Start nonstop ping**
+
+<img width="1968" height="722" alt="Screenshot 2026-02-14 at 12 29 24 AM" src="https://github.com/user-attachments/assets/fadc32ca-6e37-4399-aefa-ffdb69585eb3" />
 

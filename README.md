@@ -103,9 +103,20 @@ Double‑click the Ethernet adapter.
 <img width="1983" height="737" alt="Screenshot 2026-02-14 at 12 24 40 AM" src="https://github.com/user-attachments/assets/8a62892a-867c-42d5-b57b-eb9d1b6dbd0a" />
 
 
-# 🔥 Part 4 — Firewall (NSG) Testing
+# Part 4 — Firewall (NSG) Testing
 
 ## **1. Start nonstop ping**
 
 <img width="1968" height="722" alt="Screenshot 2026-02-14 at 12 29 24 AM" src="https://github.com/user-attachments/assets/fadc32ca-6e37-4399-aefa-ffdb69585eb3" />
+
+
+## **2. Block ICMP in VM2’s NSG**
+Add inbound rule:
+- Deny  
+- ICMP  
+- Priority 280  
+
+<img width="1330" height="1217" alt="Image 2-22-26 at 9 22 AM" src="https://github.com/user-attachments/assets/0318f879-a87c-4dd2-a126-b9986289dbbb" />
+
+
 

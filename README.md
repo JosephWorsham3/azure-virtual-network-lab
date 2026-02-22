@@ -127,3 +127,12 @@ Delete or disable the deny rule.
 
 <img width="1577" height="761" alt="Image 2-22-26 at 9 37 AM" src="https://github.com/user-attachments/assets/4c55f585-bc5e-4e37-bb2c-a3b7ac1a1ea2" />
 
+ # ** Filter for SSH**
+
+<img width="1391" height="1052" alt="Image 2-22-26 at 12 07 PM" src="https://github.com/user-attachments/assets/52e7ca39-36ee-4abc-b97a-b4bab98727ce" />
+
+<img width="1664" height="898" alt="Image 2-22-26 at 1 23 PM" src="https://github.com/user-attachments/assets/7c7a901f-b880-491b-94db-caa6006b6e63" />
+
+ # ** Filter for DNS**
+Use nslookup
+<img width="1650" height="814" alt="Image 2-22-26 at 1 39 PM" src="https://github.com/user-attachments/assets/1d3c50f4-c5de-4439-a17e-7fc2476388a2" />

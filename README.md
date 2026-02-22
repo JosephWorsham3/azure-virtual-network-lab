@@ -118,5 +118,6 @@ Add inbound rule:
 
 <img width="1330" height="1217" alt="Image 2-22-26 at 9 22 AM" src="https://github.com/user-attachments/assets/0318f879-a87c-4dd2-a126-b9986289dbbb" />
 
+<img width="1563" height="875" alt="Image 2-22-26 at 9 29 AM" src="https://github.com/user-attachments/assets/852b2ee1-5479-4c14-8e91-7993ffd0a64e" />
 
 

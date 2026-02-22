@@ -120,4 +120,10 @@ Add inbound rule:
 
 <img width="1563" height="875" alt="Image 2-22-26 at 9 29 AM" src="https://github.com/user-attachments/assets/852b2ee1-5479-4c14-8e91-7993ffd0a64e" />
 
+# **3. Re-enable ICMP**
+Delete or disable the deny rule.
+
+<img width="1451" height="1084" alt="Image 2-22-26 at 9 33 AM" src="https://github.com/user-attachments/assets/dfeec656-8789-4219-91ae-1fbd0c880906" />
+
+<img width="1577" height="761" alt="Image 2-22-26 at 9 37 AM" src="https://github.com/user-attachments/assets/4c55f585-bc5e-4e37-bb2c-a3b7ac1a1ea2" />
 

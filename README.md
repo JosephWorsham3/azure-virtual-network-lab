@@ -136,3 +136,31 @@ Delete or disable the deny rule.
  # ** Filter for DNS**
 Use nslookup
 <img width="1650" height="814" alt="Image 2-22-26 at 1 39 PM" src="https://github.com/user-attachments/assets/1d3c50f4-c5de-4439-a17e-7fc2476388a2" />
+
+ # ** DHCP Traffic**
+ Filter for DHCP
+ 
+ Renew IP
+
+ <img width="1643" height="706" alt="Image 2-22-26 at 1 49 PM" src="https://github.com/user-attachments/assets/6543b3c3-d275-4b7f-aa21-1e986d0dff5d" />
+
+# ** DHCP Traffic**
+RDP Traffic
+
+tcp.port == 3389
+
+<img width="1682" height="912" alt="Image 2-22-26 at 1 55 PM" src="https://github.com/user-attachments/assets/1580311b-4068-41c5-a5f0-7fda6eaebcc5" />
+
+# What I Learned
+VM deployment
+
+VNet/Subnet configuration
+
+NSG firewall rules
+
+Wireshark protocol analysis
+
+Troubleshooting Windows Firewall
+
+Understanding ICMP, DNS, DHCP, SSH, RDP
+

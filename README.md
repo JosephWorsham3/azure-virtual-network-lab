@@ -1,4 +1,4 @@
-# 🖥️ Azure Windows-to-Windows Networking Lab  
+# Azure Windows-to-Windows Networking Lab  
 A beginner-friendly cloud networking project built on Microsoft Azure.
 
 This lab demonstrates how to deploy two Windows 11 virtual machines, place them on the same virtual network, and observe network traffic using Wireshark.  
@@ -6,7 +6,7 @@ Completed on a **Mac Mini** using Microsoft Remote Desktop.
 
 ---
 
-# 🚀 Goals
+# Goals
 - Deploy two Windows 11 VMs  
 - Connect from macOS  
 - Use Wireshark to capture traffic  
@@ -16,7 +16,7 @@ Completed on a **Mac Mini** using Microsoft Remote Desktop.
 
 ---
 
-# 🧱 Part 1 — Build the Azure Environment
+#  Part 1 — Build the Azure Environment
 
 ## **1. Create a Resource Group**
 - Name: `Lab-RG`
@@ -27,14 +27,14 @@ Completed on a **Mac Mini** using Microsoft Remote Desktop.
 
 ---
 
-## **2. Create Windows 11 VM #1**
+## 2. Create Windows 11 VM #1**
 - Name: `Win11-VM1`
 - Image: Windows 11 Pro
 - Networking: Create new VNet + Subnet
 
 ---
 
-## **3. Create Windows 11 VM #2**
+## 3. Create Windows 11 VM #2**
 - Name: `Win11-VM2`
 - Networking: Use the **same VNet + Subnet** as VM1
 
@@ -43,7 +43,7 @@ Completed on a **Mac Mini** using Microsoft Remote Desktop.
 
 ---
 
-## **4. Confirm Network Settings**
+## 4. Confirm Network Settings**
 Both VMs should show the same:
 - Virtual Network  
 - Subnet  
@@ -51,7 +51,7 @@ Both VMs should show the same:
 
 ---
 
-# 🖥️ Part 2 — Connect to VM1 (from macOS)
+# Part 2 — Connect to VM1 (from macOS)
 
 ## **1. Install Microsoft Remote Desktop**
 From the Mac App Store.
@@ -61,13 +61,13 @@ From the Mac App Store.
 
 ---
 
-## **2. Connect to VM1**
+## 2. Connect to VM1**
 Use VM1’s **Public IP**.
 
 
 ---
 
-# 🔍 Part 3 — Wireshark Traffic Capture
+# Part 3 — Wireshark Traffic Capture
 
 ## **1. Install Wireshark inside VM1**
 Download from https://www.wireshark.org/
@@ -77,20 +77,20 @@ Download from https://www.wireshark.org/
 
 ---
 
-## **2. Start a capture**
+## 2. Start a capture**
 Double‑click the Ethernet adapter.
 
 
 ---
 
-## **3. Filter for ICMP**
+## 3. Filter for ICMP**
 
 ![Image 2-1-26 at 10 26 AM](https://github.com/user-attachments/assets/7b865b4f-2bcb-4977-9240-0bdee24ca649)
 
 
 ---
 
-## **4. Ping VM2**
+## 4. Ping VM2**
 
 
 <img width="1793" height="787" alt="Screenshot 2026-02-14 at 12 21 50 AM" src="https://github.com/user-attachments/assets/4758610a-b903-43de-a734-fe4f1c74a617" />
@@ -98,19 +98,19 @@ Double‑click the Ethernet adapter.
 
 ---
 
-## **5. Ping Google**
+## 5. Ping Google**
 
 <img width="1983" height="737" alt="Screenshot 2026-02-14 at 12 24 40 AM" src="https://github.com/user-attachments/assets/8a62892a-867c-42d5-b57b-eb9d1b6dbd0a" />
 
 
 # Part 4 — Firewall (NSG) Testing
 
-## **1. Start nonstop ping**
+## 1. Start nonstop ping**
 
 <img width="1968" height="722" alt="Screenshot 2026-02-14 at 12 29 24 AM" src="https://github.com/user-attachments/assets/fadc32ca-6e37-4399-aefa-ffdb69585eb3" />
 
 
-## **2. Block ICMP in VM2’s NSG**
+## 2. Block ICMP in VM2’s NSG**
 Add inbound rule:
 - Deny  
 - ICMP  
@@ -120,7 +120,7 @@ Add inbound rule:
 
 <img width="1563" height="875" alt="Image 2-22-26 at 9 29 AM" src="https://github.com/user-attachments/assets/852b2ee1-5479-4c14-8e91-7993ffd0a64e" />
 
-# **3. Re-enable ICMP**
+# 3. Re-enable ICMP**
 Delete or disable the deny rule.
 
 <img width="1451" height="1084" alt="Image 2-22-26 at 9 33 AM" src="https://github.com/user-attachments/assets/dfeec656-8789-4219-91ae-1fbd0c880906" />
